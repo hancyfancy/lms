@@ -1,0 +1,53 @@
+version: '3'
+volumes:
+  pgdata:
+  courses:
+  custom:
+  db:
+  mangalyainfrastructures:
+  static:
+  templates:
+  mangalyadb:
+services:
+  python:
+    image: python:3.4
+    build:
+      context: .
+      dockerfile: docker/prod/python/Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=mangalyainfrastructures.settings.prod
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - courses:/courses
+      - custom:/custom
+      - db:/db
+      - mangalyainfrastructures:/mangalyainfrastructures
+      - static:/static
+      - templates:/templates
+    ports:
+      - 8000:8000
+    command: gunicorn -w 4 mangalyainfrastructures.wsgi -b 0.0.0.0:8000
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: mangalyadb
+      MYSQL_USER: mangalyauser
+      MYSQL_PASSWORD: atpsp595
+      MYSQL_ROOT_PASSWORD: KRistz89af
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    volumes:
+      - mangalyadb:/var/lib/mysql
+  nginx:
+    image: nginx
+    build:
+      context: .
+      dockerfile: docker/prod/nginx/Dockerfile
+    volumes:
+      - static:/static
+    ports:
+      - 80:80

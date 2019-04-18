@@ -1,0 +1,175 @@
+/*
+ * Classes for div positioning using inline-block grid system.
+ * Only use divs as containers
+ *
+ * @author Atal Malavde
+ * @version 1.0
+ * @since 2018-11-25
+ */
+
+:root {
+	/*--primary-background-colour: #ffc266;*/
+	--primary-background-color: #ffffff;
+	--primary-font-family: "Lucida Console", Monaco, monospace;
+	--primary-color: #000000;
+	--position: relative;
+	--display: inline-block;
+}
+
+body {
+	background-color: var(--primary-background-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--primary-font-family);
+}
+
+p {
+	font-family: var(--primary-font-family);
+}
+
+a {
+	font-family: var(--primary-font-family);
+}
+
+ul {
+	overflow: hidden;
+}
+
+.horizontol-scroll {
+	overflow-x: scroll;
+}
+
+.vertical-scroll {
+	overflow-y: scroll;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.active {
+	color: #4CAF50;
+}
+
+.aside {
+	grid-area: aside;
+}
+
+.body {
+	grid-area: body;
+}
+
+.header {
+	grid-area: header;
+}
+
+.wrapper {
+	display: grid;
+	grid-row-gap: 50px 50px;
+	grid-template-areas:
+	"aside"
+	"header"
+	"body"
+}
+
+.box {
+	background-color:var(--primary-background-color);
+	color: var(--primary-color);
+	padding: 0;
+	font-size: 100%;	
+}
+
+.header {
+	background-color: var(--primary-background-color);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+	li a {
+		border-radius: 1vw;
+	}
+
+	.wrapper {	
+		grid-template-columns: 20% auto;
+		grid-template-rows: 10vh 50vh;
+		grid-template-areas:
+		"aside  header"
+		"aside  body";
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	div#media-content {
+		background-image: url('/static/images/logo_img_white_background.gif/');
+		background-repeat: no-repeat;
+		background-position: 60% 50%;
+		background-attachment: fixed;
+		background-size: 98px 98px;
+	}
+
+	li a {
+		border-radius: 2vw;
+	}
+
+	.wrapper {	
+		grid-template-columns: 20% auto;
+		grid-template-rows: 10vh 55vh;
+		grid-template-areas:
+		"aside  header"
+		"aside  body";
+	}
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	div#media-content {
+		background-image: url('/static/images/logo_img_white_background.gif/');
+		background-repeat: no-repeat;
+		background-position: 60% 50%;
+		background-attachment: fixed;
+		background-size: 98px 98px;
+	}
+
+	li a {
+		border-radius: 3vw;
+	}
+
+	.wrapper {	
+		grid-template-columns: 20% auto;
+		grid-template-rows: 10vh 60vh;
+		grid-template-areas:
+		"aside  header"
+		"aside  body";
+	}
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+	div#media-content {
+		background-image: url('/static/images/logo_img_white_background.gif/');
+		background-repeat: no-repeat;
+		background-position: 60% 50%;
+		background-attachment: fixed;
+		background-size: 98px 98px;
+	}
+
+	li a {
+		border-radius: 4vw;
+	}
+
+	.wrapper {	
+		grid-template-columns: 20% auto;
+		grid-template-rows: 10vh 65vh;
+		grid-template-areas:
+		"aside  header"
+		"aside  body";
+	}
+}
+

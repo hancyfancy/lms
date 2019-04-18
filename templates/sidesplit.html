@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block style %}
+	<link rel="stylesheet" type="text/css" href="{% static "css/custom.css/" %}">
+{% endblock %}
+
+<!-- Using grid -->
+{% block content %}
+	<div class="wrapper">
+		<div class="box header text-center"><h3>{% block header %}{% endblock %}</h3></div>
+		<div class="box aside text-center">{% block side %}{% endblock %}</div>
+		<div class="box body text-center">{% block main %}{% endblock %}</div>
+	</div>
+{% endblock %}
+

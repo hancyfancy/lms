@@ -1,0 +1,5 @@
+[client]
+database = mangalyadb
+user = mangalyauser
+password = atpsp595
+default-character-set = utf8

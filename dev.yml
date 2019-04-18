@@ -1,0 +1,48 @@
+version: '3'
+volumes:
+  pgdata:
+  courses:
+  custom:
+  db:
+  mangalyainfrastructures:
+  static:
+  templates:
+  utils:
+  mangalyadb:
+services:
+  python: &python
+    image: python:3.6
+    build:
+      context: .
+      dockerfile: docker/dev/python/Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=mangalyainfrastructures.settings
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - courses:/courses
+      - custom:/custom
+      - db:/db
+      - mangalyainfrastructures:/mangalyainfrastructures
+      - static:/static
+      - templates:/templates
+      - utils:/utils
+    ports:
+      - 8000:8000
+    command: ['python3 manage.py makemigrations; python3 manage.py migrate; python3 manage.py runserver 0.0.0.0:8000']
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: mangalyadb
+      MYSQL_USER: mangalyauser
+      MYSQL_PASSWORD: atpsp595
+      MYSQL_ROOT_PASSWORD: KRistz89af
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--socket=/run/mysqld/mysqld.sock']
+    ports:
+      - 5432:5432
+    expose:
+      - 3306
+    volumes:
+      - mangalyadb:/var/lib/mysql

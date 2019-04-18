@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Mangalya Infrastructures online">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="Atal Malavde">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery-ui.1.12.1.theme.min.css/" />
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css/" />
+	<link rel="stylesheet" type="text/css" href="/static/css/custom.css/">
+	{% block style %}{% endblock %}
+</head>
+<body>
+	<nav id="topnav" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-list">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<a class="navbar-brand" href="/"><img id="navbar-title" src="/static/images/title_horizontal_navbar_background.png/" alt="Mangalya infrastructures" height="25px" width="250px"></a>
+			</div>
+			<div class="nav navbar-collapse collapse" id="collapse-list">
+				<ul class="nav navbar-nav">
+					{% if user.is_authenticated %}
+						<li>
+							<a href="/accounts/profile/courses/">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -3 16 16"><path fill="#777777" fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"/></svg>
+								Courses
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -4 16 16"><path fill="#777777" fill-rule="evenodd" d="M15.41 9H7.59C7 9 7 8.59 7 8c0-.59 0-1 .59-1h7.81c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM9.59 4C9 4 9 3.59 9 3c0-.59 0-1 .59-1h5.81c.59 0 .59.41.59 1 0 .59 0 1-.59 1H9.59zM0 3.91l1.41-1.3L3 4.2 7.09 0 8.5 1.41 3 6.91l-3-3zM7.59 12h7.81c.59 0 .59.41.59 1 0 .59 0 1-.59 1H7.59C7 14 7 13.59 7 13c0-.59 0-1 .59-1z"/></svg>
+								Certificates
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 -2 14 16"><path fill="#777777" fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
+								Rewards
+							</a>
+						</li>
+						<li>
+							<a href="/accounts/profile/">
+								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 -3 12 16"><path fill="#777777" fill-rule="evenodd" d="M12 14.002a.998.998 0 0 1-.998.998H1.001A1 1 0 0 1 0 13.999V13c0-2.633 4-4 4-4s.229-.409 0-1c-.841-.62-.944-1.59-1-4 .173-2.413 1.867-3 3-3s2.827.586 3 3c-.056 2.41-.159 3.38-1 4-.229.59 0 1 0 1s4 1.367 4 4v1.002z"/></svg>
+								{{ user.username|title }}
+							</a>
+						</li>
+						<li>
+							<a href="/account/logout/">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -3 16 16"><path fill="#777777" fill-rule="evenodd" d="M11.992 8.994V6.996H7.995v-2h3.997V2.999l3.998 2.998-3.998 2.998zm-1.998 2.998H5.996V2.998L2 1h7.995v2.998h1V1c0-.55-.45-.999-1-.999H.999A1.001 1.001 0 0 0 0 1v11.372c0 .39.22.73.55.91L5.996 16v-3.008h3.998c.55 0 1-.45 1-1V7.995h-1v3.997z"/></svg>
+								Sign Out
+							</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="/account/login/">
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 -3 14 16"><path fill="#777777" fill-rule="evenodd" d="M7 6.75V12h4V8h1v4c0 .55-.45 1-1 1H7v3l-5.45-2.72c-.33-.17-.55-.52-.55-.91V1c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v3h-1V1H3l4 2v2.25L10 3v2h4v2h-4v2L7 6.75z"/></svg>
+								Sign In
+							</a>
+						</li>
+						<li>
+							<a href="/account/signup/">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -3 16 16"><path fill="#777777" fill-rule="evenodd" d="M16 12.999c0 .439-.45 1-1 1H7.995c-.539 0-.994-.447-.995-.999H1c-.54 0-1-.561-1-1 0-2.634 3-4 3-4s.229-.409 0-1c-.841-.621-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.442.58 2.5 3c.058 2.41-.159 2.379-1 3-.229.59 0 1 0 1s1.549.711 2.42 2.088C9.196 9.369 10 8.999 10 8.999s.229-.409 0-1c-.841-.62-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.437.581 2.495 3c.059 2.41-.158 2.38-1 3-.229.59 0 1 0 1s3.005 1.366 3.005 4z"/></svg>
+								Sign Up
+							</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="content" class="container">
+		{% block content %}{% endblock %}
+	</div>
+	<div id="blank"></div>
+	<div id="footer" class="container">
+		<span>{{ request.session.year }} &copy; Mangalya Infrastructures</span>
+	</div>
+	<script type="text/javascript" src="/static/js/jquery.3.3.1.slim.min.js/"></script>
+	<script type="text/javascript" src="/static/js/popper.1.14.3.min.js/"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js/"></script>
+	<script type="text/javascript" src="/static/js/jquery-ui.1.12.1.min.js/"></script>
+	<script type="text/javascript" src="/static/js/custom.js/"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "sidesplit.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}Courses | {{ user.username|title }}{% endblock %}
+
+{% block header %}<div id="media-header">Choose content</div>{% endblock %}
+
+{% block side %}
+	<ul id="material-list" class="list-group">
+	{% for material in material_list %}
+		<li class="list-group-item list-group-item-success">{{ material.0 }}</li>
+		<li class="list-group-item list-group-item-info">{{ material.1 }}</li>
+		<li class="list-group-item btn btn-default" data-type="{{ material.3 }}" data-url="{{ material.2 }}" data-label="{{ material.4 }}">
+			{{ material.4 }}
+		</li>
+	{% endfor %}
+	</ul>
+{% endblock %}
+
+{% block main %}
+	<br /><div id="media-content"><p>Content will be displayed here.</p></div>
+{% endblock %}
+

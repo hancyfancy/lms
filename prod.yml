@@ -33,8 +33,8 @@ services:
     environment:
       MYSQL_DATABASE: mangalyadb
       MYSQL_USER: mangalyauser
-      MYSQL_PASSWORD: atpsp595
-      MYSQL_ROOT_PASSWORD: KRistz89af
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: anotherpassword
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
     ports:
       - 5432:5432
